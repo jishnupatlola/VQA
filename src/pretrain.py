@@ -20,9 +20,9 @@ class SelfSupervisedTask(nn.Module):
         output = self.fc(features)
         return output
 
-def pretrain(model, dataloader, num_epochs=20):
+def pretrain(model, dataloader, num_epochs=8):
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.05)
     
     for epoch in range(num_epochs):
         for images, _, _ in dataloader:
@@ -45,7 +45,7 @@ if __name__ == "__main__":
         transforms.ToTensor()
     ])
     dataset = VQADataset('data/dataset.json', transform=transform)
-    dataloader = DataLoader(dataset, batch_size=100, shuffle=True)
+    dataloader = DataLoader(dataset, batch_size=5, shuffle=True)
     
     model = VQAModel()
     pretrain_model = SelfSupervisedTask(model.cnn)

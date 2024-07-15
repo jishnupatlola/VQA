@@ -8,14 +8,14 @@ sys.path.append('C:\\Users\\dell\\OneDrive\\Desktop\\VQA')
 from model.vqa_model import VQAModel
 from dataset import VQADataset
 
-def fine_tune(model, dataloader, num_epochs=20):
+def fine_tune(model, dataloader, num_epochs=8):
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.05)
 
     for epoch in range(num_epochs):
         for images, questions, answers in dataloader:
-            questions = torch.zeros(images.size(0), 10, 500)
-            answers = torch.randint(0, 100, (images.size(0),))
+            questions = torch.zeros(images.size(0), 10, 50)
+            answers = torch.randint(0, 10, (images.size(0),))
 
             outputs = model(images, questions)
             loss = criterion(outputs, answers)
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         transforms.ToTensor()
     ])
     dataset = VQADataset('data/dataset.json', transform=transform)
-    dataloader = DataLoader(dataset, batch_size=100, shuffle=True)
+    dataloader = DataLoader(dataset, batch_size=5, shuffle=True)
     
     model = VQAModel()
     fine_tune(model, dataloader)

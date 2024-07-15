@@ -10,7 +10,7 @@ image_dir = os.path.join(data_dir, 'images')
 os.makedirs(image_dir, exist_ok=True)
 
 # Parameters
-num_images = 2000
+num_images = 50
 image_size = (64, 64)
 questions = ["What shape is this?", "What color is this?"]
 
