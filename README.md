@@ -7,27 +7,6 @@ Sure! Here is an example of a `README.md` file for your Visual Question Answerin
 
 This project implements a Visual Question Answering (VQA) system using self-supervised learning techniques for few-shot learning. The system pretrains a convolutional neural network (CNN) on self-supervised tasks and fine-tunes it on a VQA dataset.
 
-## Project Structure
-
-```
-VQA/
-├── data/
-│   ├── dataset.json          # JSON file containing paths to images, questions, and answers
-│   ├── images/               # Directory containing images
-├── models/
-│   ├── __init__.py
-│   ├── vqa_model.py          # VQA model definition
-├── src/
-│   ├── __init__.py
-│   ├── main.py               # Main script to run the entire process
-│   ├── pretrain.py           # Script for self-supervised pretraining
-│   ├── tune.py               # Script for fine-tuning on VQA dataset
-│   ├── evaluate.py           # Script for evaluation
-├── results/                  # Directory to save results and checkpoints
-├── README.md                 # Project readme file
-├── requirements.txt          # Python dependencies
-```
-
 ## Setup
 
 1. **Clone the repository:**
